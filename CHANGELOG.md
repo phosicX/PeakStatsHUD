@@ -3,10 +3,11 @@
 ## [1.0.0] - 2026-10-18
 
 Initial release of PeakStatsHUD, based on PeakStatsEx 1.5.4 by LengSword and
-StaminaStatsTactikot 1.3.7 by TactiKot.
+StaminaStatsTactikot 1.3.7 by TactiKot. Generated with AI assistance (DeepSeek-V4,1-Flash).
 
 ### Added
 
+- Standalone plugin ID `com.phosicX.PeakStatsHUD` and DLL name `com.phosicX.PeakStatsHUD.dll`.
 - Edge-style stamina labels: stamina and bonus stamina values above the left end of the bar,
   affliction values at the bottom edge of their segment, with up to three label rows.
 - PEAK HUD font in bold and the StaminaStatsTactikot colour treatment for all values.

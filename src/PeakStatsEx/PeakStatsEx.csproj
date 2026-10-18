@@ -2,7 +2,7 @@
   <!-- Project properties -->
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>com.github.LengSword.PeakStatsEx</AssemblyName>
+    <AssemblyName>com.phosicX.PeakStatsHUD</AssemblyName>
     <AssemblyTitle>PeakStatsHUD</AssemblyTitle>
     <Version>1.0.0</Version>
   </PropertyGroup>

@@ -14,6 +14,9 @@ PeakStatsHUD is built on top of two existing PEAK mods:
 Both upstream projects are MIT licensed. The original packages are kept under
 [`references/`](references) for attribution and comparison; see [`LICENSE`](LICENSE).
 
+> **AI-generated:** this mod — the code changes, layout work and documentation — was generated
+> with AI assistance using **DeepSeek-V4,1-Flash**.
+
 ## Features
 
 ### Edge-style numbers (TactiKot layout)
@@ -61,11 +64,12 @@ Both upstream projects are MIT licensed. The original packages are kept under
 
 1. Install BepInExPack_PEAK.
 2. Remove or back up an existing `com.github.LengSword.PeakStatsEx.dll` in `BepInEx/plugins/`.
-   PeakStatsHUD replaces PeakStatsEx and keeps the same plugin ID and config file.
-3. Copy `plugins/com.github.LengSword.PeakStatsEx.dll` from the release archive into
+   PeakStatsHUD uses its own plugin ID (`com.phosicX.PeakStatsHUD`); running it together with
+   PeakStatsEx would draw the HUD numbers twice.
+3. Copy `plugins/com.phosicX.PeakStatsHUD.dll` from the release archive into
    `BepInEx/plugins/`.
 4. Launch the game. Settings are written to
-   `BepInEx/config/com.github.LengSword.PeakStatsEx.cfg`.
+   `BepInEx/config/com.phosicX.PeakStatsHUD.cfg`.
 
 Do not install PeakStatsHUD and PeakStatsEx at the same time.
 
@@ -144,7 +148,7 @@ PeakStatsHUD is a .NET Standard 2.1 BepInEx plugin. The repository pins .NET SDK
      -p:RunThunderPipePackAfterBuild=false
    ```
 
-   The DLL is written to `artifacts/bin/PeakStatsEx/release/com.github.LengSword.PeakStatsEx.dll`.
+   The DLL is written to `artifacts/bin/PeakStatsEx/release/com.phosicX.PeakStatsHUD.dll`.
 
 Optional build properties:
 
@@ -162,11 +166,12 @@ README.md
 CHANGELOG.md
 LICENSE
 icon.png
-plugins/com.github.LengSword.PeakStatsEx.dll
+plugins/com.phosicX.PeakStatsHUD.dll
 ```
 
-The plugin file name and plugin ID intentionally stay the same as PeakStatsEx so the config
-file and existing installs keep working.
+The plugin uses the standalone ID `com.phosicX.PeakStatsHUD`, so it has its own config file
+and does not conflict with a PeakStatsEx installation at the file level. Do not run both mods
+at the same time, since both draw the same HUD numbers.
 
 ## Credits
 
@@ -176,8 +181,10 @@ file and existing installs keep working.
 | StaminaStatsTactikot 1.3.7 | TactiKot | MIT |
 | StaminaStats (upstream of Tactikot) | pixx | MIT |
 | PeakStatsHUD modifications | phosicX | MIT |
+| AI assistance | DeepSeek-V4,1-Flash | — |
 
-Thank you to all three authors for making their work available.
+Thank you to all three authors for making their work available. The PeakStatsHUD code changes
+and documentation were generated with AI assistance using DeepSeek-V4,1-Flash.
 
 ## Licence
 
