@@ -180,7 +180,7 @@ at the same time, since both draw the same HUD numbers.
 | PeakStatsEx 1.5.4 | LengSword | MIT |
 | StaminaStatsTactikot 1.3.7 | TactiKot | MIT |
 | StaminaStats (upstream of Tactikot) | pixx | MIT |
-| PeakStatsHUD modifications | phosicX | MIT |
+| PeakStatsHUD | phosicX | MIT |
 | AI assistance | DeepSeek-V4,1-Flash | — |
 
 Thank you to all three authors for making their work available. The PeakStatsHUD code changes
