@@ -1,0 +1,9 @@
+{
+  "name": "PeakStatsHUD",
+  "version_number": "1.0.0",
+  "description": "Edge-style stamina and affliction numbers for PEAK, with a separate hunger countdown, teammate name spacing and per-value toggles. Based on PeakStatsEx by LengSword and StaminaStatsTactikot by TactiKot.",
+  "website_url": "https://github.com/phosicX/PeakStatsHUD",
+  "dependencies": [
+    "BepInEx-BepInExPack_PEAK-5.4.75301"
+  ]
+}

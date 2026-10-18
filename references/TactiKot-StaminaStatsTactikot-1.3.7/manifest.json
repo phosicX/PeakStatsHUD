@@ -1,0 +1,9 @@
+{
+  "name": "StaminaStatsTactikot",
+  "version_number": "1.3.7",
+  "website_url": "",
+  "description": "Adds stamina, bonus stamina, and affliction numbers to PEAK's HUD. Customize rounding, text size, contrast, and label placement.",
+  "dependencies": [
+    "BepInEx-BepInExPack_PEAK-5.4.75301"
+  ]
+}

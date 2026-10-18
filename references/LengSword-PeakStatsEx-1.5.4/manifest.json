@@ -1,0 +1,9 @@
+{
+  "name": "PeakStatsEx",
+  "version_number": "1.5.4",
+  "description": "Displays teammate stamina bars and item names in the inventory for improved cooperative gameplay. You can also see how long and how far you've been climbing!",
+  "website_url": "https://codeberg.org/yls-peak-mods/PeakStatsEx",
+  "dependencies": [
+    "BepInEx-BepInExPack_PEAK-5.4.75301"
+  ]
+}
