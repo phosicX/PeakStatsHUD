@@ -1,3 +1,5 @@
+**English** | [简体中文](/docs/README_zh.md)
+
 # PeakStatsHUD
 
 A HUD mod for **PEAK** that draws stamina, bonus stamina and affliction numbers at the edge of
