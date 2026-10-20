@@ -54,6 +54,10 @@ Both upstream projects are MIT licensed. The original packages are kept under
 - Map seed display for Terrain Randomiser, Terrain Customiser, PLL Library and True Final Ascent
   when the corresponding interfaces are available.
 - Compatibility handling for PLL, Terrain Randomiser, Terrain Customiser and True Final Ascent.
+- Robust HUD creation: the timer/height, map/level and teammate HUD are created from a prefix and
+  deferred bootstrap, so another mod throwing inside `GUIManager.Start` can no longer prevent
+  them from appearing. This fixes the missing HUD with True Final Ascent's FINAL ASCENT +
+  Apocalypse combination (PeakAMap throws there during `GUIManager.Start`).
 
 ## Requirements
 
@@ -64,12 +68,15 @@ Both upstream projects are MIT licensed. The original packages are kept under
 
 1. Install BepInExPack_PEAK.
 2. Remove or back up an existing `com.github.LengSword.PeakStatsEx.dll` in `BepInEx/plugins/`.
-   PeakStatsHUD uses its own plugin ID (`com.phosicX.PeakStatsHUD`); running it together with
-   PeakStatsEx would draw the HUD numbers twice.
-3. Copy `plugins/com.phosicX.PeakStatsHUD.dll` from the release archive into
+   PeakStatsHUD uses its own plugin ID (`com.github.phosicX.PeakStatsHUD`); running it together
+   with PeakStatsEx would draw the HUD numbers twice.
+3. Copy `plugins/com.github.phosicX.PeakStatsHUD.dll` from the release archive into
    `BepInEx/plugins/`.
 4. Launch the game. Settings are written to
-   `BepInEx/config/com.phosicX.PeakStatsHUD.cfg`.
+   `BepInEx/config/com.github.phosicX.PeakStatsHUD.cfg`.
+
+If you used the 1.0.0 build (plugin ID `com.phosicX.PeakStatsHUD`), rename its config file to
+`com.github.phosicX.PeakStatsHUD.cfg` to keep the settings.
 
 Do not install PeakStatsHUD and PeakStatsEx at the same time.
 
@@ -143,12 +150,12 @@ PeakStatsHUD is a .NET Standard 2.1 BepInEx plugin. The repository pins .NET SDK
 4. Build:
 
    ```powershell
-   dotnet build src/PeakStatsEx/PeakStatsEx.csproj -c Release `
+   dotnet build src/PeakStatsHUD/PeakStatsHUD.csproj -c Release `
      -p:PEAKGameRootDir="C:\Program Files (x86)\Steam\steamapps\common\PEAK\" `
      -p:RunThunderPipePackAfterBuild=false
    ```
 
-   The DLL is written to `artifacts/bin/PeakStatsEx/release/com.phosicX.PeakStatsHUD.dll`.
+   The DLL is written to `artifacts/bin/PeakStatsHUD/release/com.github.phosicX.PeakStatsHUD.dll`.
 
 Optional build properties:
 
@@ -158,7 +165,7 @@ Optional build properties:
 
 ## Release contents
 
-`release/PeakStatsHUD-1.0.0.zip` is a Thunderstore-style package:
+`release/PeakStatsHUD-1.0.1.zip` is a Thunderstore-style package:
 
 ```
 manifest.json
@@ -166,12 +173,12 @@ README.md
 CHANGELOG.md
 LICENSE
 icon.png
-plugins/com.phosicX.PeakStatsHUD.dll
+plugins/com.github.phosicX.PeakStatsHUD.dll
 ```
 
-The plugin uses the standalone ID `com.phosicX.PeakStatsHUD`, so it has its own config file
-and does not conflict with a PeakStatsEx installation at the file level. Do not run both mods
-at the same time, since both draw the same HUD numbers.
+The plugin uses the standalone ID `com.github.phosicX.PeakStatsHUD`, so it has its own config
+file and does not conflict with a PeakStatsEx installation at the file level. Do not run both
+mods at the same time, since both draw the same HUD numbers.
 
 ## Credits
 

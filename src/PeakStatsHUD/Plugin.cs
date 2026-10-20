@@ -1,11 +1,8 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Logging;
 using PeakStatsEx.MonoBehaviours;
 using HarmonyLib;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System.Text;
 using System;
 
@@ -38,53 +35,21 @@ public partial class Plugin : BaseUnityPlugin
 [HarmonyWrapSafe]
 internal sealed class Patches
 {
-    [HarmonyPatch(typeof(GUIManager), "Start")]
-    [HarmonyPostfix]
-    private static void GUIManagerStartHook(GUIManager __instance)
+    // Attach the HUD bootstrap from a prefix. Prefixes run before every postfix, so the HUD is
+    // still created when another mod's GUIManager.Start postfix throws and Harmony skips the
+    // remaining postfixes (PeakAMap does this in TFA's FINAL ASCENT + Apocalypse mode).
+    [HarmonyPatch(typeof(GUIManager), "Awake")]
+    [HarmonyPrefix]
+    private static void GUIManagerAwakePrefix(GUIManager __instance)
     {
-        if (SceneManager.GetActiveScene().name != "Airport")
-        {
-            CreateTimerAndHeightStats();
-            CreateMapStats();
-        }
-        ProximityStaminaManager.InitializeBarGroup(__instance);
-        void CreateTimerAndHeightStats()
-        {
-            Transform obj = __instance.GetComponentInChildren<AscentUI>().transform;
-            RectTransform obj2 = (RectTransform)UnityEngine.Object.Instantiate(obj, obj.parent);
-            obj2.name = "Timer & Height UI";
-            UnityEngine.Object.Destroy(obj2.GetComponent<AscentUI>());
-            obj2.gameObject.AddComponent<TimerHeightStats>();
-            obj2.pivot = obj2.anchorMax = obj2.anchorMin = new Vector2(0.5f, 1f);
-            obj2.anchoredPosition = Vector2.zero;
-        }
-        void CreateMapStats()
-        {
-            RectTransform sourceRect = (RectTransform)__instance.GetComponentInChildren<AscentUI>().transform;
-            RectTransform mapStatsRect = UnityEngine.Object.Instantiate(sourceRect, sourceRect.parent);
-            mapStatsRect.name = "Map & Level UI";
-            UnityEngine.Object.Destroy(mapStatsRect.GetComponent<AscentUI>());
-            MapStats mapStats = mapStatsRect.gameObject.AddComponent<MapStats>();
-            mapStatsRect.pivot = mapStatsRect.anchorMax = mapStatsRect.anchorMin = new Vector2(1f, 1f);
-            mapStatsRect.anchoredPosition = new Vector2(-MapStats.MapTextRightMargin, 5f);
+        HudBootstrap.Attach(__instance);
+    }
 
-            RectTransform routeRect = UnityEngine.Object.Instantiate(sourceRect, sourceRect.parent);
-            routeRect.name = "Biome Route UI";
-            UnityEngine.Object.Destroy(routeRect.GetComponent<AscentUI>());
-            routeRect.pivot = routeRect.anchorMax = routeRect.anchorMin = new Vector2(1f, 1f);
-            routeRect.anchoredPosition = new Vector2(0f, sourceRect.anchoredPosition.y - sourceRect.rect.height + 8f);
-
-            TMP_Text routeText = routeRect.GetComponent<TMP_Text>();
-            RectTransform variantRect = UnityEngine.Object.Instantiate(sourceRect, sourceRect.parent);
-            variantRect.name = "Biome Variant UI";
-            UnityEngine.Object.Destroy(variantRect.GetComponent<AscentUI>());
-            variantRect.pivot = variantRect.anchorMax = variantRect.anchorMin = new Vector2(1f, 1f);
-            variantRect.anchoredPosition = new Vector2(0f, routeRect.anchoredPosition.y - sourceRect.rect.height + 22f);
-
-            TMP_Text variantText = variantRect.GetComponent<TMP_Text>();
-            RectTransform hudCanvasRect = __instance.hudCanvas.GetComponent<RectTransform>();
-            mapStats.InitializeRouteText(routeText, variantText, hudCanvasRect);
-        }
+    [HarmonyPatch(typeof(GUIManager), "Start")]
+    [HarmonyPrefix]
+    private static void GUIManagerStartPrefix(GUIManager __instance)
+    {
+        HudBootstrap.Attach(__instance);
     }
 
     [HarmonyPatch(typeof(PlayerHandler), "RegisterCharacter")]
