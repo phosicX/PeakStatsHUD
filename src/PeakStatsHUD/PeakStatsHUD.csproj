@@ -4,14 +4,14 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>com.github.phosicX.PeakStatsHUD</AssemblyName>
     <AssemblyTitle>PeakStatsHUD</AssemblyTitle>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <!-- ThunderPipe properties -->
   <PropertyGroup>
     <IsThunderstorePackable>true</IsThunderstorePackable>
     <ThunderstoreName>PeakStatsHUD</ThunderstoreName>
-    <ThunderstoreDescription>Edge-style stamina and affliction numbers for PEAK, with a separate hunger countdown, teammate name spacing and per-value toggles. Based on PeakStatsEx and StaminaStatsTactikot.</ThunderstoreDescription>
+    <ThunderstoreDescription>Stamina-only HUD for PEAK: edge-style stamina, bonus stamina and affliction numbers for the local player and teammates. No timers, height, seed or map statistics.</ThunderstoreDescription>
     <!--
       Communities and package categories metadata for publishing with ThunderPipe.
       Communities: https://thunderstore.io/api/experimental/community/
@@ -37,20 +37,5 @@
     <ThunderstorePackageFile Include="$(SolutionRoot)LICENSE" />
 
     <ThunderstoreDependency Include="BepInEx-BepInExPack_PEAK" Version="5.4.75301" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="TerrainRandomiser">
-      <HintPath>$(PEAKBepInExDir)/plugins/Snosz-TerrainRandomiser/TerrainRandomiser.dll</HintPath>
-      <Private></Private>
-    </Reference>
-    <Reference Include="TerrainCustomiser">
-      <HintPath>$(PEAKBepInExDir)/plugins/Snosz-TerrainCustomiser/TerrainCustomiser.dll</HintPath>
-      <Private></Private>
-    </Reference>
-    <Reference Include="PLL">
-      <HintPath>$(PEAKBepInExDir)/plugins/AeralisFoundation-PLL_Library/PLL_Library.dll</HintPath>
-      <Private></Private>
-    </Reference>
   </ItemGroup>
 </Project>

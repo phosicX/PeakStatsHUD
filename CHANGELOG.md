@@ -1,5 +1,37 @@
 # Changelog
 
+## [2.0.0] - 2026-11-12
+
+Stamina-only fork. This release removes the run statistics and map display, so the mod has a much
+smaller surface to maintain against PEAK, True Final Ascent and PeakStatsEx updates. Teammate bars,
+names, inventory slots and backpack slots are kept.
+
+### Removed
+
+- Run timer, climbed height, level name, biomes and biome variants.
+- Day/night countdown, fog statistics and rising hazard statistics.
+- Map seed display and the PLL, Terrain Randomiser, Terrain Customiser and True Final Ascent
+  compatibility code that supported it. The build no longer references those assemblies.
+- The `General` and `StaminaInfo` configuration pages.
+
+### Changed
+
+- The configuration now has three pages: `Stats` (label and stamina-number options), `Team`
+  (teammate bars, inventory slots, names and values) and `Debug` (self stamina bar). Existing 1.x
+  config files are not migrated; the options use the same key names but now live under `Stats`
+  and `Team`.
+- The HUD bootstrap now only initialises the teammate stamina bar group. It is still attached from
+  a prefix, so another mod throwing in `GUIManager.Start` cannot leave the teammate bars missing.
+- DLL size is reduced from about 184 KB to about 100 KB.
+
+### Kept
+
+- Edge-style stamina, bonus stamina and affliction numbers for the local player and teammates.
+- Hunger countdown and affliction countdowns.
+- Teammate names, name offset, the teammate value toggle, and the teammate inventory/backpack
+  slots.
+- Percentage option, rounding, font sizes, offsets and label rows.
+
 ## [1.0.1] - 2026-10-20
 
 ### Fixed

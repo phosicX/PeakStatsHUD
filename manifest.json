@@ -1,7 +1,7 @@
 {
   "name": "PeakStatsHUD",
-  "version_number": "1.0.1",
-  "description": "Edge-style stamina and affliction numbers for PEAK, with a separate hunger countdown, teammate name spacing, per-value toggles and a HUD bootstrap that survives other mods throwing during GUIManager.Start (True Final Ascent compatibility). Based on PeakStatsEx by LengSword and StaminaStatsTactikot by TactiKot.",
+  "version_number": "2.0.0",
+  "description": "Stamina-only HUD for PEAK: edge-style stamina, bonus stamina and affliction numbers for you and your teammates, plus teammate inventory and backpack slots. No timers, height, seed or map statistics.",
   "website_url": "https://github.com/phosicX/PeakStatsHUD",
   "dependencies": [
     "BepInEx-BepInExPack_PEAK-5.4.75301"

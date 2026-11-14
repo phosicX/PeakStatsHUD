@@ -12,9 +12,6 @@ namespace PeakStatsEx;
 /// The BepInEx plugin class of PeakStatsEx.
 /// </summary>
 [BepInAutoPlugin]
-[BepInDependency("com.snosz.terrainrandomiser", BepInDependency.DependencyFlags.SoftDependency)]
-[BepInDependency("com.snosz.terraincustomiser", BepInDependency.DependencyFlags.SoftDependency)]
-[BepInDependency("af.pll.library", BepInDependency.DependencyFlags.SoftDependency)]
 public partial class Plugin : BaseUnityPlugin
 {
     internal static new ManualLogSource Logger { get; private set; } = null!;
@@ -53,7 +50,6 @@ internal sealed class Patches
     }
 
     [HarmonyPatch(typeof(PlayerHandler), "RegisterCharacter")]
-
     [HarmonyPostfix]
     private static void PlayerHandlerRegisterCharacterHook(Character character)
     {
@@ -64,19 +60,6 @@ internal sealed class Patches
         {
             character.gameObject.AddComponent<ProximityStaminaManager>();
         }
-    }
-
-    [HarmonyPatch(typeof(LoadingScreenHandler), "LoadSceneProcess")]
-    [HarmonyPostfix]
-    private static void LoadSceneProcessHook(string sceneName)
-    {
-        if (!sceneName.Contains("Level_"))
-        {
-            return;
-        }
-        MapStats.currentLevelName = sceneName;
-        MapStats.currentLevelIndex = -1;
-        Plugin.Logger.LogDebug($"After: LoadingScreenHandler.LoadSceneProcess called. sceneName: {sceneName}");
     }
 }
 
